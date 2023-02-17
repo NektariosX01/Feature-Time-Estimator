@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Feature Time Estimator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        select {
+            display: block;
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            margin-bottom: 16px;
+        }
+
+        button {
+            display: block;
+            margin: 0 auto;
+            padding: 8px 16px;
+            font-size: 16px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 16px;
+            text-align: center;
+        }
+
+        .instructions {
+            background-color: #f8f8f8;
+            border: 1px solid #e8e8e8;
+            padding: 10px;
+            margin: 20px 0;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .instructions h2 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .instructions p {
+            margin: 10px 0;
+        }
+
+
+
+    </style>
+</head>
+<body>
+<h1>Feature Time Estimator</h1>
+<form>
+    <label for="feature-size">Feature Size:</label>
+    <select name="feature-size" id="feature-size">
+        <option value="XS">Extra Small (2 days)</option>
+        <option value="S">Small (4 days)</option>
+        <option value="M" selected>Medium (8 days)</option>
+        <option value="L">Large (16 days)</option>
+        <option value="XL">Extra Large (32 days)</option>
+    </select>
+
+    <label for="complexity">Complexity:</label>
+    <select name="complexity" id="complexity">
+        <option value="Simple">Simple (x1)</option>
+        <option value="Moderate" selected>Moderate (x2)</option>
+        <option value="Complex">Complex (x4)</option>
+    </select>
+
+    <label for="experience">Developer Experience:</label>
+    <select name="experience" id="experience">
+        <option value="Novice">Novice (x2)</option>
+        <option value="Intermediate" selected>Intermediate (x1.5)</option>
+        <option value="Expert">Expert (x1)</option>
+    </select>
+
+    <button id="estimate-button">Estimate</button>
+
+    <div id="result"></div>
+</form>
+<div class="instructions">
+<p><strong>Confidence Interval:</strong> the confidence interval is calculated as 80% to 120% of the adjusted time estimate. The adjusted time estimate takes into account the feature size, complexity, and experience level of the development team, and is calculated as follows:</p>
+
+<ul>
+    <li>The base estimate is determined by the feature size: XS=2 days, S=4 days, M=8 days, L=16 days, XL=32 days.</li>
+    <li>The complexity multiplier is determined by the complexity of the feature: Simple=1, Moderate=2, Complex=4.</li>
+    <li>The experience multiplier is determined by the experience level of the development team: Novice=2, Intermediate=1.5, Expert=1.</li>
+    <li>The adjusted time estimate is the product of the base estimate, the complexity multiplier, and the experience multiplier.</li>
+</ul>
+
+<p>The confidence interval is a way to show the potential range of values for the time estimate, taking into account the uncertainty in the inputs and the factors that affect the development process. It is calculated from the adjusted time estimate T as follows:</p>
+
+<ul>
+    <li>The lower bound of the confidence interval is 80% of T.</li>
+    <li>The upper bound of the confidence interval is 120% of T.</li>
+</ul>
+
+<p>For example, if the adjusted time estimate is 10 days, then the Confidence Interval would be:</p>
+
+<ul>
+    <li>Lower bound: 0.8 * 10 = 8 days</li>
+    <li>Upper bound: 1.2 * 10 = 12 days</li>
+</ul>
+
+<p>So, the confidence interval for this estimate would be 8 to 12 days.</p>
+</div>
+
+
+<script src="app.js"></script>
+</body>
+</html>
